@@ -9,11 +9,6 @@ import requests
 from tgbot import config
 
 
-# 创建 Session
-session = requests.Session()
-session.headers.update({'Cookie': config.cookies})
-
-
 # 获取用户信息
 async def huoquuser(username, months):
     url = f"https://fragment.com/api?hash={config.hash_value}"
@@ -110,12 +105,10 @@ async def queren_dingdan(username: str, months: int):
                 # print("支付金额：", zhifu_amount)
                 # print("支付地址：", zhifu_dizhi)
                 # print("支付payload：", zhifu_payload)
-                # 先补足 Base64 可能缺失的 `=` 进行解码
-                padding = len(zhifu_payload) % 4
+                padding = len(zhifu_payload)
                 if padding:
                     zhifu_payload += "=" * (4 - padding)
                 # print(zhifu_payload)
-                # Base64 解码
                 jiema_dizhis = base64.b64decode(zhifu_payload)
                 decoded_text = jiema_dizhis.decode("utf-8", errors="ignore")
                 filtered_text = re.sub(r'[\x00-\x1F\x7F]', '', decoded_text)  # 过滤控制字符
