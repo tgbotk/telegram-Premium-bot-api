@@ -3,9 +3,8 @@
 
 # 项目简介
 
-开发人员： https://t.me/kdawang
+开发人员： https://t.me/sosbot
 
-演示机器人 ： https://t.me/ruankebot
 
 这是一个基于 Go语言 和 python 的 Telegram自助开通会员机器人，支持24小时自动处理会员开通流程。用户通过 USDT 进行支付，机器人自动验证支付并开通会员服务。系统采用 Redis 用于缓存和会话管理，MySQL 存储用户数据和交易记录。
 
